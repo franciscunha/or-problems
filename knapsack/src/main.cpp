@@ -43,14 +43,14 @@ void solve(Data &data)
 	}
 
 	/// Objective Function
-	IloExpr sumX(env);
+	IloExpr sumVX(env);
 
 	for(int i = 0; i < data.getNItems(); i++)
 	{
-		sumX += x[i];
+		sumVX += data.getValue(i) * x[i];
 	}
 
-	model.add(IloMaximize(env, sumX));
+	model.add(IloMaximize(env, sumVX));
 
 	/// Restrictions
 
