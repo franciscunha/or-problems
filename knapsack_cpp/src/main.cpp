@@ -12,7 +12,7 @@ int main (int argc, char** argv)
 	if(argc != 2)
 	{
 		cout << "Invalid number of arguments" << endl
-			 << "usage: ./kp [dataance filepath]" << endl;
+			 << "usage: ./kp [instance filepath]" << endl;
 	 	return 2;
 	}
 
