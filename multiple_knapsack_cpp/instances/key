@@ -1,0 +1,20 @@
+key
+
+n_k n_i
+kc_1 ... kc_n
+iw_1
+...
+iw_n
+ip_1
+...
+ip_n
+
+
+//
+n_k = number of knapsacks
+n_i = number of items
+kc = knapsack capacity
+iw = item weight
+ip = item profit
+
+source = https://web.archive.org/web/20200516150306/https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html
