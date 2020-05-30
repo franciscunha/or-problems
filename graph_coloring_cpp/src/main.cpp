@@ -120,27 +120,14 @@ void solve(Data &data)
 	{
 		for (int j = k+1; j < data.getNVertices(); j++)
 		{
-			/*for(int i = 0; i < data.getMaxColors(); i++)
+			for(int i = 0; i < data.getMaxColors(); i++)
 			{
-				IloRange restriction = (data.isAdjacent(k, j) * x[i][k] * x[i][j] <= 0);
+				IloRange restriction = ( (data.isAdjacent(k, j) * x[i][k]) + x[i][j] <= 1 );
 				sprintf(name, "R_Adj(C:%d)(%d,%d)", i, k, j);
 				restriction.setName(name);
 
 				model.add(restriction);
-			}*/
-
-			IloExpr sum_i_XX(env);
-
-			for(int i = 0; i < data.getMaxColors(); i++)
-			{
-				sum_i_XX += x[i][k] * x[i][j];
 			}
-
-			IloRange restriction = (data.isAdjacent(k, j) * sum_i_XX <= 0);
-			sprintf(name, "R_Adj(%d,%d)", k, j);
-			restriction.setName(name);
-
-			model.add(restriction);
 		}
 	}
 
