@@ -15,3 +15,4 @@ Some of the classic OR problems, solved using CPLEX in C++ and Julia.
 * Partitioning problem
 * Packing problem
 * P-median problem
+* Graph coloring problem
