@@ -2,9 +2,9 @@
 
 # WIP
 
-Some of the classic OR problems, solved using CPLEX in C++ and Julia.
+OR problems, some classic and some not, implemented in C++ (with CPLEX) and Julia.
 
-#### List of problems:
+#### Classic problems:
 
 * Knapsack problem
 * Multiple knapsack problem
@@ -15,4 +15,8 @@ Some of the classic OR problems, solved using CPLEX in C++ and Julia.
 * Partitioning problem
 * Packing problem
 * P-median problem
+
+### Other problems:
+
 * Graph coloring problem
+* Reception problem
