@@ -18,7 +18,13 @@ int main (int argc, char** argv)
 
     try{
         Data data = Data(argv[1]);
-        solve(data);
+		try{
+			solve(data);
+		}catch(IloException& e) {
+			cout << e.getMessage();
+			e.end();
+			return 1;
+		} 
     }catch(DataException e){
         e.what();
         return 1;
@@ -36,23 +42,25 @@ void solve(Data &data)
 	/// Variables
 	
 	// X_i_j
-	IloArray<IloBoolVarArray> x(env, data.getNOrigins());
+	IloArray<IloIntVarArray> x(env, data.getNOrigins());
 	for(int i = 0; i < data.getNOrigins(); i++)
 	{
-		IloBoolVarArray auxVec(env, data.getNDestinations());
+		IloIntVarArray auxVec(env, data.getNDestinations(), (IloInt) 0, (IloInt)std::numeric_limits<int>::max() );
 		x[i] = auxVec;
 	}
+	
 
 	for(int i = 0; i < data.getNOrigins(); i++)
 	{
 		for(int j = 0; j < data.getNDestinations(); j++)
 		{
 			sprintf(name, "X(%d,%d)", i, j);
+
 			x[i][j].setName(name);
 			model.add(x[i][j]);		
 		}
 	}
-
+	
 	/// Objective Function
 	IloExpr sum_ij_CX(env);
 

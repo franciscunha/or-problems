@@ -10,8 +10,20 @@ Data::Data(std::string filePath)
 	file >> nOrigins;
 	file >> nDestinations;
 
-	/*missing read offers and demands, must first find instances*/
+	offer = std::vector<int>(nOrigins, 0);
+	for(int i = 0; i < nOrigins; i++)
+	{
+		file >> offer[i];
+		if(file.bad() || file.fail()) throw DataException();
+	}
 	
+	demand = std::vector<int>(nDestinations, 0);
+	for(int j = 0; j < nDestinations; j++)
+	{
+		file >> demand[j];
+		if(file.bad() || file.fail()) throw DataException();
+	}
+
     cost = std::vector<std::vector<int>>(nOrigins, std::vector<int>(nDestinations));
 	for(int i = 0; i < nOrigins; i++)
 	{
