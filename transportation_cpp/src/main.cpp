@@ -111,8 +111,6 @@ void solve(Data &data)
 	}
 
 	/// Solve
-	const double tol = 0.1;
-
 	IloCplex tp(model);
 	tp.setParam(IloCplex::TiLim, 1*60*60);
 	tp.setParam(IloCplex::Threads, 1);
@@ -133,8 +131,11 @@ void solve(Data &data)
 	{
 		for(int j = 0; j < data.getNDestinations(); j++)
 		{
-			if(tp.getValue(x[i][j]) >= 1 - tol)
-				cout << "origin " << i << " to destination " << j << endl;
+			if(tp.getValue(x[i][j]) > 0)
+				cout << "origin " << i 
+					 << " sends " << tp.getValue(x[i][j]) 
+					 << " to destination " << j 
+					 << endl;
 		}
 	}
 	cout << endl;
